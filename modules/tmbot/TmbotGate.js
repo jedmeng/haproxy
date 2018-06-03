@@ -1,4 +1,3 @@
-const HA = require('./ha');
 
 class TmbotGate {
   constructor() {
