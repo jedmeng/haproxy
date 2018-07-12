@@ -1,0 +1,10 @@
+{
+  "entry": "./ui/src/index.js",
+  "outputPath": "./ui/dist",
+  "html": {
+    "template": "views/index.html"
+  },
+  "extraBabelPlugins": [
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]
+  ]
+}

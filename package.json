@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "roadhog server",
+    "build": "roadhog build",
+    "lint": "eslint --ext .js src test",
+    "precommit": "npm run lint"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +21,26 @@
     "lodash": "^4.17.10",
     "oauth2-server": "^3.0.0",
     "ws": "^5.2.0"
+  },
+  "devDependencies": {
+    "antd": "^3.6.6",
+    "babel-plugin-dva-hmr": "^0.3.2",
+    "babel-plugin-import": "^1.8.0",
+    "classnames": "^2.2.6",
+    "dva": "^2.3.1",
+    "eslint": "^4.14.0",
+    "eslint-config-umi": "^0.1.1",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.12.0",
+    "omit.js": "^1.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-particles-js": "^2.2.0",
+    "redbox-react": "^1.4.3",
+    "roadhog": "^2.0.0"
   }
 }
