@@ -29,29 +29,45 @@ class Test {
     };
     return await axios.post(`${prefix}/token`, querystring.stringify(params));
   }
-  async control(token) {
+
+  async gateRequest(namespace, name, payload) {
+
     const data = {
       "header": {
-        "namespace": "AliGenie.Iot.Device.Control",
-        "name": "TurnOn",
+        "namespace": namespace,
+        "name": name,
         "messageId": "1bd5d003-31b9-476f-ad03-71d471922820",
         "payLoadVersion": 1
       },
-      "payload": {
-        "accessToken": token,
-        "deviceId": "media_player.living_room",
-        "deviceType": "XXX",
-        "attribute": "powerstate",
-        "value": "on",
-        "extensions": {
-          "extension1": "",
-          "extension2": ""
-        }
+      "payload": payload
+    };
+
+    return await axios.post(`${prefix}/gate`, data);
+  }
+
+  async discover(token) {
+    const payload = {
+      "accessToken": token
+    };
+
+    return await this.gateRequest('AliGenie.Iot.Device.Discovery', 'DiscoveryDevices', payload);
+  }
+
+  async control(token) {
+    const payload = {
+      "accessToken": token,
+      "deviceId": "media_player.living_room",
+      "deviceType": "XXX",
+      "attribute": "powerstate",
+      "value": "on",
+      "extensions": {
+        "extension1": "",
+        "extension2": ""
       }
     };
 
 
-    return await axios.post(`${prefix}/gate`, data);
+    return await this.gateRequest('AliGenie.Iot.Device.Control', 'TurnOn', payload);
   }
 
   async run() {
@@ -59,8 +75,8 @@ class Test {
       let resp;
       resp = await this.step1();
       resp = await this.step2('0aee6d9efdb34ea5fff09e8ae19bb990333469e6');
-      resp = await this.control(resp.data.access_token);
-      console.log(resp.data);
+      resp = await this.discover(resp.data.access_token);
+      console.log(resp.data, resp.data.payload.devices);
     } catch (e) {
       console.log(e);
     }
