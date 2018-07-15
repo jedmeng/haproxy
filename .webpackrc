@@ -1,10 +1,13 @@
 {
-  "entry": "./ui/src/index.js",
-  "outputPath": "./ui/dist",
-  "html": {
-    "template": "views/index.html"
-  },
+  "entry": "./web/index.js",
+  "outputPath": "./app/public",
   "extraBabelPlugins": [
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]
-  ]
+  ],
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:7001/",
+      "changeOrigin": true
+    }
+  }
 }

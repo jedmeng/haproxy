@@ -1,19 +1,23 @@
 {
-  "name": "haagent",
+  "name": "harelay",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "roadhog server",
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop",
+    "dev": "egg-bin dev",
+    "dev-web": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "egg": "^2.9.1",
+    "extend2": "^1.0.0",
     "handlebars": "^4.0.11",
+    "is-plain-object": "^2.0.4",
     "koa": "^2.5.1",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
@@ -28,13 +32,17 @@
     "babel-plugin-import": "^1.8.0",
     "classnames": "^2.2.6",
     "dva": "^2.3.1",
+    "dva-loading": "^2.0.3",
+    "egg-bin": "^4.7.1",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
     "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
+    "extend": "^3.0.1",
     "husky": "^0.12.0",
+    "js-cookie": "^2.2.0",
     "omit.js": "^1.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.2.0",
@@ -42,5 +50,14 @@
     "react-particles-js": "^2.2.0",
     "redbox-react": "^1.4.3",
     "roadhog": "^2.0.0"
+  },
+  "author": "jedmeng",
+  "license": "GPL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eggjs/egg.git"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
   }
 }

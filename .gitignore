@@ -5,6 +5,10 @@
 # production
 /dist
 
+# runtime
+/run
+/logs
+
 # misc
 .idea
 .DS_Store
